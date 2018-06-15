@@ -4,7 +4,7 @@ let pool  = mysql.createPool({
     host            : 'localhost',
     user            : 'root',
     password        : 'password',
-    database        : 'mysql',
+    database        : 'second_main',
     insecureAuth : true
 });
 

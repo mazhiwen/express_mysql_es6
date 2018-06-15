@@ -21,12 +21,12 @@ router.get('/', function(req, res, next) {
 
   
 
-  mysql.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+  mysql.query('SELECT * FROM users', function(err, rows, fields) {
     // console.log(err);
     // console.log(rows);
     // console.log(fields);
     if (err) throw err;
-    console.log('The solution is: ', rows[0].solution);
+    console.log('The solution is: ', rows);
     res.send(rows);
   });
   // connection.end();
