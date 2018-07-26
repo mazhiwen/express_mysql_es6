@@ -19,24 +19,25 @@ router.get('/list', function(req, res, next) {
 });
 
 
-router.post('/create', function(req, res, next) {
-  // mysql.query(`INSERT INTO users (accout,password) values (${req.body.account},${req.body.password})`, function(err, rows, fields) {
-  //   if (err) {
-  //     let  message='错误';
-  //     if(err.code=='ER_DUP_ENTRY'){
-  //       message='用户名称重复'
-  //     }
-  //     res.send({
-  //       status:500,
-  //       message:message
-  //     });
-  //   }else{
-  //     res.send({
-  //       status:200,
-  //       message:'成功'
-  //     });
-  //   }
-  // });
+router.put('/create', function(req, res, next) {
+  let {name,developer,releaseDate}=req.body;
+  mysql.query(`INSERT INTO gameList values (NULL,${name},${developer},${releaseDate})`, function(err, rows, fields) {
+    if (err) {
+      let  message='错误';
+      if(err.code=='ER_DUP_ENTRY'){
+        message='用户名称重复'
+      }
+      res.send({
+        status:500,
+        message:message
+      });
+    }else{
+      res.send({
+        status:200,
+        message:'成功'
+      });
+    }
+  });
 });
 
 router.post('/login', function(req, res, next) {
