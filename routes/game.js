@@ -23,7 +23,7 @@ router.put('/create', function(req, res, next) {
   let {name,developer,releaseDate}=req.body;
   mysql.query(`INSERT INTO gameList values (NULL,${name},${developer},${releaseDate})`, function(err, rows, fields) {
     if (err) {
-      let  message='错误';
+      let  message='服务器发生错误';
       if(err.code=='ER_DUP_ENTRY'){
         message='用户名称重复'
       }
